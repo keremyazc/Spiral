@@ -256,7 +256,7 @@ const PAGE = `<!DOCTYPE html>
       <div class="toolnav" id="toolnav"></div>
       <div class="sp1"></div>
       <button class="theme" id="themeBtn"><span id="themeIc"></span><span id="themeLbl">Açık mod</span></button>
-      <div class="credit">created by <b>kerem yazıcı</b> &middot; <span style="color:#57b6ff">sürüm: cizim-11</span></div>
+      <div class="credit">geliştiren: <b>kerem yazıcı</b> &middot; <span style="color:#57b6ff">sürüm: cizim-11</span></div>
     </div>
     <div class="center" id="center"></div>
     <div class="results" id="results"></div>
@@ -825,14 +825,14 @@ export default {
       for (const k of list.keys) { const v = await env.LOGS.get(k.name); if (v) { try { rows.push(JSON.parse(v)); } catch (e) {} } }
       rows.sort(function(a, b){ return (a.at < b.at) ? 1 : -1; });
       const e = function(s){ return String(s == null ? '' : s).replace(/[&<>]/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); };
-      let html = '<!DOCTYPE html><meta charset="utf-8"><title>Kayitlar</title><style>body{font-family:sans-serif;background:#0d0d0d;color:#eee;padding:24px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #222;vertical-align:top}.u{color:#7fb2ff}.d{color:#6f6f6b;white-space:nowrap}</style><h2>Kayitlar (' + rows.length + ')</h2><table><tr><th>Tarih</th><th>Kullanici</th><th>Islem/Metin</th></tr>';
+      let html = '<!DOCTYPE html><meta charset="utf-8"><title>Kayıtlar</title><style>body{font-family:sans-serif;background:#0d0d0d;color:#eee;padding:24px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #222;vertical-align:top}.u{color:#7fb2ff}.d{color:#6f6f6b;white-space:nowrap}</style><h2>Kayıtlar (' + rows.length + ')</h2><table><tr><th>Tarih</th><th>Kullanıcı</th><th>İşlem/Metin</th></tr>';
       for (const r of rows) html += '<tr><td class="d">' + e((r.at || '').replace('T', ' ').slice(0, 19)) + '</td><td class="u">' + e(r.user) + '</td><td>' + e(r.text) + '</td></tr>';
       html += '</table>';
       return new Response(html, { headers: { 'content-type': 'text/html; charset=utf-8' } });
     }
 
     if (request.method === 'GET') return new Response(PAGE, { headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store, no-cache, must-revalidate' } });
-    return new Response('Not found', { status: 404 });
+    return new Response('Bulunamadı', { status: 404 });
   }
 };
 
