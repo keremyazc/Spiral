@@ -1,0 +1,7 @@
+name = "istegin-nedir"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[[kv_namespaces]]
+binding = "LOGS"
+id = "2e9c04f27eab4b29bdf3a1633c8f78ee"
